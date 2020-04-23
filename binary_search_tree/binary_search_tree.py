@@ -1,10 +1,7 @@
 from dll_stack import Stack
 from dll_queue import Queue
-from doubly_linked_list import DoublyLinkedList
 import sys
-sys.path.append('binary_search_tree/dll_queue.py')
-sys.path.append('binary_search_tree/dll_stack.py')
-sys.path.append('binary_search_tree/doubly_linked_list.py')
+sys.path.append('../queue_and_stack')
 
 
 class BinarySearchTree:
@@ -24,7 +21,7 @@ class BinarySearchTree:
                 self.left.insert(value)
         else:
             if not self.right:
-                self.right: BinarySearchTree(value)
+                self.right = BinarySearchTree(value)
             else:
                 self.right.insert(value)
 
@@ -42,7 +39,9 @@ class BinarySearchTree:
             else:
                 return self.right.contains(target)
 
+        return True
     # Return the maximum value found in the tree
+
     def get_max(self):
         if self.right:
             return self.right.get_max()
