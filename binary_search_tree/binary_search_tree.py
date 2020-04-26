@@ -39,7 +39,6 @@ class BinarySearchTree:
             else:
                 return self.right.contains(target)
 
-        return True
     # Return the maximum value found in the tree
 
     def get_max(self):
@@ -61,18 +60,38 @@ class BinarySearchTree:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+    def in_order_print(self, node=None):
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        q = Queue()
+        q.enqueue(node)
+        while q.size > 0:
+            popped = q.dequeue()
+            print(popped.value)
+            if popped.left:
+                q.enqueue(popped.left)
+            if popped.right:
+                q.enqueue(popped.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+        while stack.size > 0:
+            popped = stack.pop()
+            print(popped.value)
+            if popped.left:
+                stack.push(popped.left)
+            if popped.right:
+                stack.push(popped.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
